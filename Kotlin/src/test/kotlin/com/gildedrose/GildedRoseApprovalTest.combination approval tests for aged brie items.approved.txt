@@ -1,0 +1,16 @@
+[0, 0] => Aged Brie, -1, 2 
+[0, 10] => Aged Brie, -1, 12 
+[0, 49] => Aged Brie, -1, 50 
+[0, 50] => Aged Brie, -1, 50 
+[6, 0] => Aged Brie, 5, 1 
+[6, 10] => Aged Brie, 5, 11 
+[6, 49] => Aged Brie, 5, 50 
+[6, 50] => Aged Brie, 5, 50 
+[11, 0] => Aged Brie, 10, 1 
+[11, 10] => Aged Brie, 10, 11 
+[11, 49] => Aged Brie, 10, 50 
+[11, 50] => Aged Brie, 10, 50 
+[12, 0] => Aged Brie, 11, 1 
+[12, 10] => Aged Brie, 11, 11 
+[12, 49] => Aged Brie, 11, 50 
+[12, 50] => Aged Brie, 11, 50 
