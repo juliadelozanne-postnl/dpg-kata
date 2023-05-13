@@ -1,6 +1,6 @@
 package com.gildedrose
 
-class GildedRose(var items: List<Item>) {
+class GildedRose(val items: List<Item>) {
 
     fun updateQuality() {
         for (i in items.indices) {
@@ -56,11 +56,11 @@ class GildedRose(var items: List<Item>) {
 
     fun updateItems() {
         for (item in items) {
-            when (item.name) {
-                "Aged Brie" -> updateAgedBrie(item)
-                "Backstage passes to a TAFKAL80ETC concert" -> updateBackstagePasses(item)
-                "Conjured Mana Cake" -> updateConjuredItem(item)
-                "Sulfuras, Hand of Ragnaros" -> continue
+            when (item) {
+                is AgedBrie -> updateAgedBrie(item)
+                is BackstagePasses -> updateBackstagePasses(item)
+                is ConjuredItem-> updateConjuredItem(item)
+                is Sulfuras -> continue
                 else -> updateNormalItem(item)
             }
         }
