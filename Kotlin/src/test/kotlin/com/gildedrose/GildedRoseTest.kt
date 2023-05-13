@@ -26,7 +26,7 @@ internal class GildedRoseTest {
     }
 
     /*
-
+    This is how I started. This code is only still here because of the interview and to explain my approach
     @Test
     fun `should decrease quality by two when Conjured Mana Cake is updated before sell date`() {
         val items = listOf(Item("Conjured Mana Cake", 2, 10))
