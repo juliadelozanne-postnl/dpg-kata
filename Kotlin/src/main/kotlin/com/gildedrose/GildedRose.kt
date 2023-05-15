@@ -7,7 +7,7 @@ class GildedRose(val items: List<Item>) {
             when (item) {
                 is AgedBrie -> updateAgedBrie(item)
                 is BackstagePasses -> updateBackstagePasses(item)
-                is ConjuredItem-> updateConjuredItem(item)
+                is ConjuredItem -> updateConjuredItem(item)
                 is Sulfuras -> continue
                 else -> updateNormalItem(item)
             }
@@ -16,39 +16,35 @@ class GildedRose(val items: List<Item>) {
 
     private fun updateAgedBrie(item: Item) {
         decreaseSellIn(item)
-        increaseQuality(item)
-        if (item.sellIn < 0) {
-            increaseQuality(item)
+        when {
+            item.sellIn < 0 -> repeat(2) { increaseQuality(item) }
+            else -> increaseQuality(item)
         }
     }
 
     private fun updateBackstagePasses(item: Item) {
         decreaseSellIn(item)
-        increaseQuality(item)
-        if (item.sellIn < 11) {
-            increaseQuality(item)
-        }
-        if (item.sellIn < 6) {
-            increaseQuality(item)
-        }
-        if (item.sellIn < 0) {
-            item.quality = 0
+        when {
+            item.sellIn < 0 -> item.quality = 0
+            item.sellIn in 0..5 -> repeat(3) { increaseQuality(item) }
+            item.sellIn in 6..11 -> repeat(2) { increaseQuality(item) }
+            else -> increaseQuality(item)
         }
     }
 
     private fun updateNormalItem(item: Item) {
         decreaseSellIn(item)
-        decreaseQuality(item)
-        if (item.sellIn < 0) {
-            decreaseQuality(item)
+        when {
+            item.sellIn < 0 -> repeat(2) { decreaseQuality(item) }
+            else -> decreaseQuality(item)
         }
     }
 
     private fun updateConjuredItem(item: Item) {
         decreaseSellIn(item)
-        repeat(2) { decreaseQuality(item) }
-        if (item.sellIn < 0) {
-            repeat(2) { decreaseQuality(item) }
+        when {
+            item.sellIn < 0 -> repeat(4) { decreaseQuality(item) }
+            else -> repeat(2) { decreaseQuality(item) }
         }
     }
 
