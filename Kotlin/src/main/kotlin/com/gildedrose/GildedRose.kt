@@ -15,39 +15,47 @@ class GildedRose(val items: List<Item>) {
     }
 
     private fun updateAgedBrie(item: Item) {
-        decreaseSellIn(item).also {
-            when {
-                item.sellIn < 0 -> repeat(2) { increaseQuality(item) }
-                else -> increaseQuality(item)
+        with(item) {
+            decreaseSellIn(this).also {
+                when {
+                    sellIn < 0 -> repeat(2) { increaseQuality(this) }
+                    else -> increaseQuality(this)
+                }
             }
         }
     }
 
     private fun updateBackstagePasses(item: Item) {
-        decreaseSellIn(item).also {
-            when {
-                item.sellIn < 0 -> item.quality = 0
-                item.sellIn in 0..5 -> repeat(3) { increaseQuality(item) }
-                item.sellIn in 6..11 -> repeat(2) { increaseQuality(item) }
-                else -> increaseQuality(item)
+        with(item) {
+            decreaseSellIn(this).also {
+                when {
+                    sellIn < 0 -> quality = 0
+                    sellIn in 0..5 -> repeat(3) { increaseQuality(this) }
+                    sellIn in 6..11 -> repeat(2) { increaseQuality(this) }
+                    else -> increaseQuality(this)
+                }
             }
         }
     }
 
     private fun updateNormalItem(item: Item) {
-        decreaseSellIn(item).also {
-            when {
-                item.sellIn < 0 -> repeat(2) { decreaseQuality(item) }
-                else -> decreaseQuality(item)
+        with(item) {
+            decreaseSellIn(this).also {
+                when {
+                    sellIn < 0 -> repeat(2) { decreaseQuality(this) }
+                    else -> decreaseQuality(this)
+                }
             }
         }
     }
 
     private fun updateConjuredItem(item: Item) {
-        decreaseSellIn(item).also {
-            when {
-                item.sellIn < 0 -> repeat(4) { decreaseQuality(item) }
-                else -> repeat(2) { decreaseQuality(item) }
+        with(item) {
+            decreaseSellIn(this).also {
+                when {
+                    sellIn < 0 -> repeat(4) { decreaseQuality(this) }
+                    else -> repeat(2) { decreaseQuality(this) }
+                }
             }
         }
     }
